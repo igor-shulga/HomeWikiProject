@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class HomeSeleniumTest extends TestCase {
@@ -21,9 +22,12 @@ public class HomeSeleniumTest extends TestCase {
     @BeforeClass
     public void setUp() throws Exception{
         this.driver.get("https://www.wikipedia.org/");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
+
     @Test
-    public void testWiki () throws Exception{
+    public void testSeleniumSearch () throws Exception{
 
         // looking ror Selenium IDE
 
@@ -33,22 +37,30 @@ public class HomeSeleniumTest extends TestCase {
         String label = seleniumLabel.getText();
         System.out.println("Wikipedia page " + label + " opened");
         assertTrue("Wrong page", label.contains("Selenium"));
+        Thread.sleep(2000);
+    }
 
-
+   @Test
+    public void testChuckNorrisSearch() throws Exception{
         // looking for Chuck Norris! o_O
         driver.findElement(wikiSearchInput).sendKeys("Chuck Norris \n");
-
-        Thread.sleep(5000);
-
-         //driver.findElement(By.id("Selenium_IDE"));
-
-
-
-
-        //Selenium (software)
-
-
+        driver.findElement(By.linkText("Chuck Norris filmography"));
+        Thread.sleep(2000);
     }
+    @Test
+    public void testQASearch() throws Exception{
+        // looking for QA
+        driver.findElement(wikiSearchInput).sendKeys("QA \n");
+        WebElement element = driver.findElement(By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a"));
+        element.click();
+        String title = driver.getTitle();
+        System.out.println(title + " page opened");
+        
+    }
+
+
+
+
 
     @AfterClass
     public void tearDown(){
