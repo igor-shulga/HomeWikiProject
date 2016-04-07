@@ -16,7 +16,7 @@ public class HomeSeleniumTest extends TestCase {
     private By wikiSearchInput = By.id("searchInput"); //wiki Search field
     private By firstHeadingOnPage = By.id("firstHeading"); //wiki first Heading on every page
     private By chuckNorrisLinks = By.linkText("Chuck Norris filmography"); //link make sure we find Chuck's page
-    private By qaXpathPageLink = By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a");
+    private By qaXpathPageLink = By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a"); // xpath to open Quality assurance page
 
 
 
@@ -64,8 +64,6 @@ public class HomeSeleniumTest extends TestCase {
         assertTrue("Unexpected page opened instead QA", driver.getTitle().contains("Quality"));
         Thread.sleep(2000);
     }
-
-
 
     @AfterClass
     public void tearDown(){
