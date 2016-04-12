@@ -19,7 +19,7 @@ public class HomeSeleniumTest extends TestCase {
     private By qaXpathPageLink = By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a"); // xpath to open Quality assurance page
 
 
-
+//asd
     @Before
     public void setUp() throws Exception{
         driver = new FirefoxDriver();
