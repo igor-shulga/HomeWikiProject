@@ -10,29 +10,10 @@ public class HomeSeleniumTest extends BaseTest {
     private By firstHeadingOnPage = By.id("firstHeading"); //wiki first Heading on every page
     private By chuckNorrisLinks = By.linkText("Chuck Norris filmography"); //link make sure we find Chuck's page
     private By qaXpathPageLink = By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a"); // xpath to open Quality assurance page
-    //public String basePage = "https://www.wikipedia.org/"; // base url page
-
-
-/*
-    @BeforeClass
-    public void setUp() throws Exception{
-        driver = new FirefoxDriver();
-       // driver.get(basePage);
-        driver.navigate().to(basePage);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-
-
-    @AfterClass
-    public void tearDown(){
-        driver.quit();
-    }
-*/
 
     @Test
 
     public void testSeleniumSearchWikipedia () throws Exception{
-
         // looking ror Selenium IDE
         System.out.println("testSeleniumSearch started");
         WebElement searchInput = driver.findElement(wikiSearchInput);
