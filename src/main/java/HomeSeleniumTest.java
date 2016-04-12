@@ -1,38 +1,36 @@
-import junit.framework.TestCase;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.util.concurrent.TimeUnit;
 
 
-public class HomeSeleniumTest extends TestCase {
-    private static WebDriver driver ;
+public class HomeSeleniumTest extends BaseTest {
+ //   private static WebDriver driver ;
 
-    private By wikiSearchInput = By.id("searchInput"); //wiki Search field
+   private By wikiSearchInput = By.id("searchInput"); //wiki Search field
     private By firstHeadingOnPage = By.id("firstHeading"); //wiki first Heading on every page
     private By chuckNorrisLinks = By.linkText("Chuck Norris filmography"); //link make sure we find Chuck's page
     private By qaXpathPageLink = By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a"); // xpath to open Quality assurance page
-    private String basePage = "https://www.wikipedia.org/";
+    //public String basePage = "https://www.wikipedia.org/"; // base url page
 
 
-    @Before
+/*
+    @BeforeClass
     public void setUp() throws Exception{
         driver = new FirefoxDriver();
-        driver.get(basePage);
+       // driver.get(basePage);
+        driver.navigate().to(basePage);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @After
+
+    @AfterClass
     public void tearDown(){
         driver.quit();
     }
+*/
 
     @Test
+
     public void testSeleniumSearchWikipedia () throws Exception{
 
         // looking ror Selenium IDE
@@ -46,7 +44,7 @@ public class HomeSeleniumTest extends TestCase {
         Thread.sleep(2000);
     }
 
-   @Test
+    @Test
     public void testChuckNorrisSearchWikipedia () throws Exception{
         // looking for Chuck Norris! o_O
         System.out.println("testChuckNorrisSearch started");
