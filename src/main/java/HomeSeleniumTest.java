@@ -1,6 +1,6 @@
 import junit.framework.TestCase;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class HomeSeleniumTest extends TestCase {
-    private WebDriver driver = new FirefoxDriver();
+    private static WebDriver driver; // !! static add to not opens three instances
 
     private By wikiSearchInput = By.id("searchInput"); //wiki Search field
     private By firstHeadingOnPage = By.id("firstHeading"); //wiki first Heading on every page
@@ -20,10 +20,16 @@ public class HomeSeleniumTest extends TestCase {
 
 
 
-    @BeforeClass
+    @Before
     public void setUp() throws Exception{
-        this.driver.get("https://www.wikipedia.org/");
+        driver = new FirefoxDriver();
+        driver.get("https://www.wikipedia.org/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    @After
+    public void tearDown(){
+        driver.quit();
     }
 
 
@@ -65,9 +71,6 @@ public class HomeSeleniumTest extends TestCase {
         Thread.sleep(2000);
     }
 
-    @AfterClass
-    public void tearDown(){
-        this.driver.quit();
-    }
+
 
 }
