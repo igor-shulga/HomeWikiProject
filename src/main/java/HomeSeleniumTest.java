@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 
 
 public class HomeSeleniumTest extends BaseTest {
-    //   private static WebDriver driver ;
 
     private By wikiSearchInput = By.id("searchInput"); //wiki Search field
     private By firstHeadingOnPage = By.id("firstHeading"); //wiki first Heading on every page
