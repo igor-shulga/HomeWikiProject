@@ -4,16 +4,16 @@ import org.openqa.selenium.WebElement;
 
 
 public class HomeSeleniumTest extends BaseTest {
- //   private static WebDriver driver ;
+    //   private static WebDriver driver ;
 
-   private By wikiSearchInput = By.id("searchInput"); //wiki Search field
+    private By wikiSearchInput = By.id("searchInput"); //wiki Search field
     private By firstHeadingOnPage = By.id("firstHeading"); //wiki first Heading on every page
     private By chuckNorrisLinks = By.linkText("Chuck Norris filmography"); //link make sure we find Chuck's page
     private By qaXpathPageLink = By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a"); // xpath to open Quality assurance page
 
     @Test
 
-    public void testSeleniumSearchWikipedia () throws Exception{
+    public void testSeleniumSearchWikipedia() throws Exception {
         // looking ror Selenium IDE
         System.out.println("testSeleniumSearch started");
         WebElement searchInput = driver.findElement(wikiSearchInput);
@@ -26,18 +26,18 @@ public class HomeSeleniumTest extends BaseTest {
     }
 
     @Test
-    public void testChuckNorrisSearchWikipedia () throws Exception{
+    public void testChuckNorrisSearchWikipedia() throws Exception {
         // looking for Chuck Norris! o_O
         System.out.println("testChuckNorrisSearch started");
         driver.findElement(wikiSearchInput).sendKeys("Chuck Norris \n");
         driver.findElement(chuckNorrisLinks);
-        System.out.println("Wiki page opened "+driver.getTitle());
+        System.out.println("Wiki page opened " + driver.getTitle());
         assertTrue("This not Chuck!", driver.getTitle().contains("Chuck"));
         Thread.sleep(2000);
     }
 
     @Test
-    public void testQASearchWikipedia () throws Exception{
+    public void testQASearchWikipedia() throws Exception {
         // looking for QA
         System.out.println("testQASearch started");
         driver.findElement(wikiSearchInput).sendKeys("QA \n");
@@ -48,7 +48,6 @@ public class HomeSeleniumTest extends BaseTest {
         assertTrue("Unexpected page opened instead QA", driver.getTitle().contains("Quality"));
         Thread.sleep(2000);
     }
-
 
 
 }
