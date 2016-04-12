@@ -11,19 +11,19 @@ import java.util.concurrent.TimeUnit;
 
 
 public class HomeSeleniumTest extends TestCase {
-    private static WebDriver driver; // !! static add to not opens three instances
+    private static WebDriver driver ;
 
     private By wikiSearchInput = By.id("searchInput"); //wiki Search field
     private By firstHeadingOnPage = By.id("firstHeading"); //wiki first Heading on every page
     private By chuckNorrisLinks = By.linkText("Chuck Norris filmography"); //link make sure we find Chuck's page
     private By qaXpathPageLink = By.xpath(".//*[@id='mw-content-text']/ul[1]/li[2]/a"); // xpath to open Quality assurance page
+    private String basePage = "https://www.wikipedia.org/";
 
 
-//asd
     @Before
     public void setUp() throws Exception{
         driver = new FirefoxDriver();
-        driver.get("https://www.wikipedia.org/");
+        driver.get(basePage);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
@@ -32,9 +32,8 @@ public class HomeSeleniumTest extends TestCase {
         driver.quit();
     }
 
-
     @Test
-    public void testSeleniumSearch () throws Exception{
+    public void testSeleniumSearchWikipedia () throws Exception{
 
         // looking ror Selenium IDE
         System.out.println("testSeleniumSearch started");
@@ -48,7 +47,7 @@ public class HomeSeleniumTest extends TestCase {
     }
 
    @Test
-    public void testChuckNorrisSearch() throws Exception{
+    public void testChuckNorrisSearchWikipedia () throws Exception{
         // looking for Chuck Norris! o_O
         System.out.println("testChuckNorrisSearch started");
         driver.findElement(wikiSearchInput).sendKeys("Chuck Norris \n");
@@ -59,7 +58,7 @@ public class HomeSeleniumTest extends TestCase {
     }
 
     @Test
-    public void testQASearch() throws Exception{
+    public void testQASearchWikipedia () throws Exception{
         // looking for QA
         System.out.println("testQASearch started");
         driver.findElement(wikiSearchInput).sendKeys("QA \n");
